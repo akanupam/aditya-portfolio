@@ -1,0 +1,165 @@
+/* ============================================================================
+   BASE & CONFIGURATION
+   ========================================================================== */
+
+:root {
+  /* Layout */
+  --max-width: 1100px;
+
+  /* Primary Colors */
+  --accent: #FF6B35;
+  --accent-light: #FF8555;
+  --accent-dark: #E55100;
+  
+  /* Background Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F0F3F7;
+  
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #888888;
+  
+  /* Accent Colors */
+  --highlight: #4ECDC4;
+  --highlight-dark: #3BA39C;
+  
+  /* Border & Shadow */
+  --border-color: rgba(255, 107, 53, 0.15);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.15);
+  
+  /* Animation Timing */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  /* Primary Colors - Keep accent colors consistent for brand identity */
+  --accent: #FF6B35;
+  --accent-light: #FF8555;
+  --accent-dark: #E55100;
+  
+  /* Background Colors - Dark variants */
+  --bg-primary: #0A0E27;
+  --bg-secondary: #1A1F3A;
+  --bg-tertiary: #2D3448;
+  
+  /* Text Colors - Light variants for dark background */
+  --text-primary: #E8ECFF;
+  --text-secondary: #B0B8CC;
+  --text-muted: #7A8299;
+  
+  /* Accent Colors - Brighter for visibility on dark */
+  --highlight: #4ECDC4;
+  --highlight-dark: #3BA39C;
+  
+  /* Border & Shadow - Adjusted for dark mode */
+  --border-color: rgba(255, 107, 53, 0.25);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   RESET & NORMALIZATION
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
+              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================================
+   LAYOUT
+   ========================================================================== */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+main.main {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  background: transparent;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.section:first-child {
+  border-top: none;
+}
+
+.section .container {
+  padding: 0 5rem;
+}
+
+.section h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.section h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--accent-light);
+}

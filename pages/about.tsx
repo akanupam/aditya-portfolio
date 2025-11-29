@@ -1,19 +1,37 @@
+import Head from 'next/head'
 import Layout from '../components/Layout'
+import { portfolioData } from '../data/portfolio'
+import { siteConfig } from '../config/site'
 
+/**
+ * About Page
+ * Dedicated page for more detailed information about Aditya
+ * Includes background, interests, and professional overview
+ */
 export default function About() {
+  const { personal, interests } = portfolioData
+
   return (
     <Layout>
+      <Head>
+        <title>{siteConfig.pages.about.title}</title>
+        <meta name="description" content={siteConfig.pages.about.description} />
+        <meta property="og:title" content={siteConfig.pages.about.title} />
+        <meta property="og:description" content={siteConfig.pages.about.description} />
+        <meta property="og:type" content="website" />
+      </Head>
+
       <section className="section">
         <div className="container">
           <h2>About me</h2>
           <p>
-            I'm a Computer Science student interested in systems, web development, and algorithms. I enjoy building projects that solve real problems and learning new tools.
+            {personal.about.summary}
           </p>
           <h3>Interests</h3>
           <ul>
-            <li>Web development (React, Next.js)</li>
-            <li>Systems and performance</li>
-            <li>Competitive programming / algorithms</li>
+            {interests.map((interest) => (
+              <li key={interest}>{interest}</li>
+            ))}
           </ul>
         </div>
       </section>

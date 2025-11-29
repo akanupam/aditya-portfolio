@@ -1,0 +1,7 @@
+# ESLint ignore file
+# Ignore all node_modules and build artifacts
+node_modules/
+.next/
+out/
+dist/
+build/
