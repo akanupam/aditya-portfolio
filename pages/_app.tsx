@@ -2,6 +2,10 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import '../styles/globals.css'
 import { siteConfig } from '../config/site'
+import { CursorAnimation } from '../components/CursorAnimation'
+
+// Feature flag - set to false to disable cursor animation
+const ENABLE_CURSOR_ANIMATION = true
 
 /**
  * App Component - Root component for the Next.js application
@@ -19,6 +23,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:locale" content="en_US" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* Cursor Animation - Isolated & Detachable */}
+      {ENABLE_CURSOR_ANIMATION && <CursorAnimation />}
       <Component {...pageProps} />
     </>
   )
