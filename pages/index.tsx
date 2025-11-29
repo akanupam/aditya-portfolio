@@ -30,7 +30,7 @@ export default function Home() {
           {/* Hero Left - Text Content */}
           <div className="hero-left">
             <h1 className="hero-heading">
-              Hello, <span className="gradient-text">I'm {personal.name}</span> 
+              Hello, <span className="gradient-text">I&apos;m {personal.name}</span> 
             </h1>
             
             <p className="hero-subtitle">
@@ -137,8 +137,8 @@ export default function Home() {
       <section className="section cta-section">
         <div className="container">
           <div className="cta-content">
-            <h2>Let's Build Something Amazing Together</h2>
-            <p>I'm always interested in hearing about new projects and opportunities. Whether you want to collaborate, have a question, or just want to chat, feel free to reach out!</p>
+            <h2>Let&apos;s Build Something Amazing Together</h2>
+            <p>I&apos;m always interested in hearing about new projects and opportunities. Whether you want to collaborate, have a question, or just want to chat, feel free to reach out!</p>
             <a href="#contact" className="btn primary btn-large">Start a Project</a>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function Home() {
       <section id="contact" className="section contact-section">
         <div className="container">
           <h2>Get in Touch</h2>
-          <p>I'd love to hear from you. Feel free to reach out for internships, collaborations, or just to chat.</p>
+          <p>I&apos;d love to hear from you. Feel free to reach out for internships, collaborations, or just to chat.</p>
           <div className="contact-methods">
             <a className="btn primary" href="mailto:aditanupam@gmail.com?subject=Hello%20Aditya&body=Hi%20Aditya%2C%0A%0AI%20would%20like%20to%20connect%20with%20you.">Email Me</a>
             <a className="btn ghost" href={siteConfig.socialLinks.github.url} target="_blank" rel="noopener noreferrer">GitHub</a>
