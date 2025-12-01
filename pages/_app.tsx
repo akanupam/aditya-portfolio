@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import '../styles/globals.css'
 import { siteConfig } from '../config/site'
@@ -15,25 +15,40 @@ const ENABLE_CURSOR_ANIMATION = true
  */
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
+  const scrollPositions = useRef<Record<string, number>>({})
 
-  // Handle smooth scroll to hash on route change
   useEffect(() => {
+    // Store scroll position before navigation
+    const handleBeforeRouteChange = () => {
+      scrollPositions.current[router.asPath] = window.scrollY
+    }
+
+    // Restore scroll position or handle hash on route complete
     const handleRouteChange = (url: string) => {
+      // If URL has a hash, scroll to that element
       if (url.includes('#')) {
-        const hash = url.split('#')[1]
-        const element = document.getElementById(hash)
-        
         setTimeout(() => {
+          const hash = url.split('#')[1]
+          const element = document.getElementById(hash)
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' })
           }
         }, 100)
+      } else {
+        // Otherwise restore the saved scroll position
+        const savedPosition = scrollPositions.current[url] || 0
+        window.scrollTo(0, savedPosition)
       }
     }
 
+    router.events.on('beforeHistoryChange', handleBeforeRouteChange)
     router.events.on('routeChangeComplete', handleRouteChange)
-    return () => router.events.off('routeChangeComplete', handleRouteChange)
-  }, [router.events])
+    
+    return () => {
+      router.events.off('beforeHistoryChange', handleBeforeRouteChange)
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router])
 
   return (
     <>
