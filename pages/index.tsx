@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import Layout from '../components/Layout'
 import { portfolioData } from '../data/portfolio'
 import { siteConfig } from '../config/site'
@@ -104,7 +105,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <h2>Featured Projects</h2>
-            <a href="/projects" className="view-all-link">View All Projects →</a>
+            <Link href="/projects" className="view-all-link">View All Projects →</Link>
           </div>
           <ul className="projects">
             {projects.filter(p => p.featured).map((p) => (
@@ -133,7 +134,7 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <h2>Skills & Technologies</h2>
-            <a href="/skills" className="view-all-link">View All Skills →</a>
+            <Link href="/skills" className="view-all-link">View All Skills →</Link>
           </div>
           
           {/* Render featured skills (core expertise) */}
@@ -160,10 +161,10 @@ export default function Home() {
         <div className="container">
           <div className="cta-wrapper">
             <h2>Ready to Collaborate?</h2>
-            <p className="cta-subtitle">I'm always excited about interesting challenges and opportunities to create impactful solutions.</p>
+            <p className="cta-subtitle">I&apos;m always excited about interesting challenges and opportunities to create impactful solutions.</p>
             <div className="cta-buttons-group">
               <a href="mailto:aditanupam@gmail.com?subject=Project%20Inquiry&body=Hi%20Aditya%2C%0A%0AI%20would%20like%20to%20discuss%20a%20project%20opportunity%20with%20you." className="btn primary btn-large">Start a Conversation</a>
-              <a href="/projects" className="btn secondary btn-large">Explore My Work</a>
+              <Link href="/projects" className="btn secondary btn-large">Explore My Work</Link>
             </div>
           </div>
         </div>
@@ -174,9 +175,7 @@ export default function Home() {
       <section id="contact" className="section contact-section">
         <div className="container">
           <h2>Connect With Me</h2>
-          <p className="contact-subtitle">Reach out through your preferred channel. I'll get back to you promptly.</p>
-          
-          <div className="contact-grid">
+            <p className="contact-subtitle">Reach out through your preferred channel. I&apos;ll get back to you promptly.</p>          <div className="contact-grid">
             <div className="contact-card">
               <div className="contact-header">
                 <h3>Email</h3>

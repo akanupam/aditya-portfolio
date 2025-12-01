@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Layout from '../components/Layout'
 import { portfolioData } from '../data/portfolio'
 import { siteConfig } from '../config/site'
@@ -20,9 +21,9 @@ export default function Skills() {
   return (
     <Layout>
       <Head>
-        <title>Skills | Aadi's Web</title>
+        <title>Skills | Aadi&apos;s Web</title>
         <meta name="description" content="Explore my technical skills and expertise in AI/ML, full-stack development, and DevOps." />
-        <meta property="og:title" content="Skills | Aadi's Web" />
+        <meta property="og:title" content="Skills | Aadi&apos;s Web" />
         <meta property="og:description" content="Explore my technical skills and expertise in AI/ML, full-stack development, and DevOps." />
         <meta property="og:type" content="website" />
       </Head>
@@ -73,9 +74,9 @@ export default function Skills() {
           {/* Summary CTA */}
           <div className="skills-cta">
             <p>These skills are continuously evolving as I explore new technologies and best practices.</p>
-            <a href="/?#contact" className="btn primary">
-              Let's collaborate →
-            </a>
+            <Link href="/#contact" className="btn primary">
+              Let&apos;s collaborate →
+            </Link>
           </div>
         </div>
       </section>
