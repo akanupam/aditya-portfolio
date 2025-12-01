@@ -43,8 +43,11 @@ export default function Home() {
                 {siteConfig.contact.ctaText}
                 <span className="btn-icon">→</span>
               </a>
-              <a className="btn secondary" href="#projects">
+              {/* <a className="btn secondary" href="#projects">
                 View my work
+              </a> */}
+              <a className="btn secondary" href={siteConfig.resume.url} download>
+                📄 {siteConfig.resume.label}
               </a>
             </div>
           </div>
@@ -70,17 +73,28 @@ export default function Home() {
       <section id="about" className="section about">
         <div className="container">
           <h2>About Me</h2>
-          <p>
-            {personal.about.summary}
-          </p>
-          <h3>Education</h3>
-          <p>{personal.about.education}</p>
-          <h3>Interests</h3>
-          <ul className="interests-list">
-            {interests.map((interest) => (
-              <li key={interest}>{interest}</li>
-            ))}
-          </ul>
+          
+          <div className="about-section">
+            <ul className="about-highlights">
+              {personal.about.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="about-section">
+            <h3>Education</h3>
+            <p className="about-detail">{personal.about.education}</p>
+          </div>
+
+          <div className="about-section">
+            <h3>Interests</h3>
+            <ul className="interests-list">
+              {interests.map((interest) => (
+                <li key={interest}>{interest}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -88,21 +102,24 @@ export default function Home() {
       {/* Showcase of featured projects with links to GitHub repositories */}
       <section id="projects" className="section projects-section">
         <div className="container">
-          <h2>Projects</h2>
+          <div className="section-header">
+            <h2>Featured Projects</h2>
+            <a href="/projects" className="view-all-link">View All Projects →</a>
+          </div>
           <ul className="projects">
-            {projects.map((p) => (
-              <li key={p.title} className="project">
-                {/* Project color thumbnail banner */}
-                <div className="project-thumbnail" style={{background: p.gradient}}></div>
+            {projects.filter(p => p.featured).map((p) => (
+              <li key={p.title} className={`project ${p.featured ? 'featured' : ''}`}>
+                {p.featured && <span className="project-badge">Featured</span>}
+                <div className="project-thumbnail" style={{background: p.gradient}}>
+                  <span className="project-type">{p.type}</span>
+                </div>
                 <h4>{p.title}</h4>
                 <p>{p.desc}</p>
-                {/* Technology tags */}
                 <div className="project-tags">
                   {p.tags.map((tag) => (
                     <span key={tag} className="tag">{tag}</span>
                   ))}
                 </div>
-                {/* GitHub repository link */}
                 <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-link">View on GitHub →</a>
               </li>
             ))}
@@ -111,50 +128,88 @@ export default function Home() {
       </section>
 
       {/* ===== SKILLS & TECHNOLOGIES SECTION ===== */}
-      {/* Technical skills organized by category (Frontend, Backend, Tools) */}
+      {/* Featured skills organized by category with link to full skills page */}
       <section id="skills" className="section skills-section">
         <div className="container">
-          <h2>Skills & Technologies</h2>
+          <div className="section-header">
+            <h2>Skills & Technologies</h2>
+            <a href="/skills" className="view-all-link">View All Skills →</a>
+          </div>
           
-          {/* Render skills grouped by category */}
+          {/* Render featured skills (core expertise) */}
           <div className="skills-by-category">
-            {Object.entries(skillsByCategory).map(([category, items]) => (
-              <div key={category} className="skill-category">
-                <h3>{category}</h3>
-                <div className="badges">
-                  {items.map((skill) => (
-                    <span key={skill} className="badge">{skill}</span>
-                  ))}
+            {Object.entries(skillsByCategory)
+              .filter(([category]) => ['AI_ML_Engineering', 'Frontend_Development', 'Backend_Development'].includes(category))
+              .map(([category, items]) => (
+                <div key={category} className="skill-category">
+                  <h3>{category.replace(/_/g, ' ')}</h3>
+                  <div className="badges">
+                    {items.map((skill) => (
+                      <span key={skill} className="badge">{skill}</span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
 
       {/* ===== CALL-TO-ACTION SECTION ===== */}
-      {/* Motivational section encouraging visitors to reach out */}
+      {/* Professional collaboration invitation */}
       <section className="section cta-section">
         <div className="container">
-          <div className="cta-content">
-            <h2>Let&apos;s Build Something Amazing Together</h2>
-            <p>I&apos;m always interested in hearing about new projects and opportunities. Whether you want to collaborate, have a question, or just want to chat, feel free to reach out!</p>
-            <a href="#contact" className="btn primary btn-large">Start a Project</a>
+          <div className="cta-wrapper">
+            <h2>Ready to Collaborate?</h2>
+            <p className="cta-subtitle">I'm always excited about interesting challenges and opportunities to create impactful solutions.</p>
+            <div className="cta-buttons-group">
+              <a href="mailto:aditanupam@gmail.com?subject=Project%20Inquiry&body=Hi%20Aditya%2C%0A%0AI%20would%20like%20to%20discuss%20a%20project%20opportunity%20with%20you." className="btn primary btn-large">Start a Conversation</a>
+              <a href="/projects" className="btn secondary btn-large">Explore My Work</a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ===== CONTACT SECTION ===== */}
-      {/* Contact methods - Email, GitHub, and LinkedIn */}
+      {/* Multiple contact channels */}
       <section id="contact" className="section contact-section">
         <div className="container">
-          <h2>Get in Touch</h2>
-          <p>I&apos;d love to hear from you. Feel free to reach out for internships, collaborations, or just to chat.</p>
-          <div className="contact-methods">
-            <a className="btn primary" href="mailto:aditanupam@gmail.com?subject=Hello%20Aditya&body=Hi%20Aditya%2C%0A%0AI%20would%20like%20to%20connect%20with%20you.">Email Me</a>
-            <a className="btn ghost" href={siteConfig.socialLinks.github.url} target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a className="btn ghost" href={siteConfig.socialLinks.linkedin.url} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <h2>Connect With Me</h2>
+          <p className="contact-subtitle">Reach out through your preferred channel. I'll get back to you promptly.</p>
+          
+          <div className="contact-grid">
+            <div className="contact-card">
+              <div className="contact-header">
+                <h3>Email</h3>
+              </div>
+              <p>For project inquiries and direct communication</p>
+              <a href="mailto:aditanupam@gmail.com?subject=Project%20Inquiry&body=Hi%20Aditya%2C%0A%0AI%20would%20like%20to%20discuss%20a%20project%20opportunity%20with%20you." className="contact-link">Send Email →</a>
+            </div>
+            
+            <div className="contact-card">
+              <div className="contact-header">
+                <h3>LinkedIn</h3>
+              </div>
+              <p>Connect professionally and view my experience</p>
+              <a href={siteConfig.socialLinks.linkedin.url} target="_blank" rel="noopener noreferrer" className="contact-link">Visit Profile →</a>
+            </div>
+            
+            <div className="contact-card">
+              <div className="contact-header">
+                <h3>GitHub</h3>
+              </div>
+              <p>Explore my projects and open source work</p>
+              <a href={siteConfig.socialLinks.github.url} target="_blank" rel="noopener noreferrer" className="contact-link">View Contributions →</a>
+            </div>
+
+            <div className="contact-card">
+              <div className="contact-header">
+                <h3>Resume</h3>
+              </div>
+              <p>View my professional CV and qualifications</p>
+              <a href={siteConfig.resume.url} download className="contact-link">Download Resume →</a>
+            </div>
           </div>
+          
         </div>
       </section>
     </Layout>

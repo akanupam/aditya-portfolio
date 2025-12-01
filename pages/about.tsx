@@ -21,18 +21,29 @@ export default function About() {
         <meta property="og:type" content="website" />
       </Head>
 
-      <section className="section">
+      <section className="section about">
         <div className="container">
           <h2>About me</h2>
-          <p>
-            {personal.about.summary}
-          </p>
-          <h3>Interests</h3>
-          <ul>
-            {interests.map((interest) => (
-              <li key={interest}>{interest}</li>
-            ))}
-          </ul>
+          
+          <div className="about-section">
+            <p>
+              {personal.about.summary}
+            </p>
+          </div>
+
+          <div className="about-section">
+            <h3>Education</h3>
+            <p className="about-detail">{personal.about.education}</p>
+          </div>
+
+          <div className="about-section">
+            <h3>Interests</h3>
+            <ul className="interests-list">
+              {interests.map((interest) => (
+                <li key={interest}>{interest}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
     </Layout>

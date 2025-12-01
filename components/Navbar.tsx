@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { siteConfig } from '../config/site'
 
@@ -15,6 +16,8 @@ import { siteConfig } from '../config/site'
 export default function Navbar() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   // Initialize theme from localStorage on client-side only
   useEffect(() => {
@@ -34,16 +37,47 @@ export default function Navbar() {
     document.documentElement.setAttribute('data-theme', newTheme)
   }
 
+  // Handle navigation with smooth scroll
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const isHomePage = pathname === '/' || pathname === ''
+    
+    if (href.startsWith('#')) {
+      e.preventDefault()
+      const elementId = href.substring(1)
+      const element = document.getElementById(elementId)
+      
+      if (isHomePage) {
+        // On home page - smooth scroll immediately
+        element?.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        // Not on home page - navigate then scroll
+        router.push('/' + href)
+      }
+    }
+  }
+
   return (
     <header className="nav">
       <div className="container nav-inner">
         {/* Logo / Brand */}
-        <h1 className="logo">{siteConfig.name}</h1>
+        <Link href="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
+          {siteConfig.name}
+        </Link>
         
         {/* Navigation Links */}
         <nav className="links" aria-label="Main navigation">
           {siteConfig.nav.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a 
+              key={item.href} 
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className={
+                (pathname === '/projects' && item.label === 'Projects') || 
+                (pathname === '/skills' && item.label === 'Skills')
+                ? 'active' 
+                : ''
+              }
+            >
               {item.label}
             </a>
           ))}

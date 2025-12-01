@@ -1,5 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import '../styles/globals.css'
 import { siteConfig } from '../config/site'
 import { CursorAnimation } from '../components/CursorAnimation'
@@ -12,6 +14,27 @@ const ENABLE_CURSOR_ANIMATION = true
  * Wraps all pages and applies global styles
  */
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
+  // Handle smooth scroll to hash on route change
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      if (url.includes('#')) {
+        const hash = url.split('#')[1]
+        const element = document.getElementById(hash)
+        
+        setTimeout(() => {
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      }
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => router.events.off('routeChangeComplete', handleRouteChange)
+  }, [router.events])
+
   return (
     <>
       <Head>

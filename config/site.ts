@@ -25,8 +25,8 @@ export const siteConfig = {
   nav: [
     { label: 'Home', href: '#hero' },
     { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Skills', href: '/skills' },
     { label: 'Contact', href: '#contact' },
   ],
 
@@ -43,10 +43,19 @@ export const siteConfig = {
       title: 'Projects | Aadi\'s Web',
       description: 'Explore my projects including College Hub, RAG-Powered Query Resolver, and more.',
     },
+    skills: {
+      title: 'Skills | Aadi\'s Web',
+      description: 'Explore my technical skills and expertise in AI/ML, full-stack development, and DevOps.',
+    },
   },
 
   contact: {
     email: 'aditanupam@gmail.com',
     ctaText: 'Get in touch',
+  },
+
+  resume: {
+    url: '/Aditya_CV.pdf',
+    label: 'Download Resume',
   },
 }
