@@ -3,64 +3,75 @@
    ========================================================================== */
 
 :root {
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
   /* Layout */
   --max-width: 1100px;
 
-  /* Primary Colors */
-  --accent: #FF6B35;
-  --accent-light: #FF8555;
-  --accent-dark: #E55100;
-  
-  /* Background Colors */
+  /* Spacing Scale (0.25rem → 4rem) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Accent Colors - Monochromatic */
+  --accent-primary: #1A1A1A;
+  --accent-secondary: #4A4A4A;
+  --accent-hover: #2A2A2A;
+
+  /* Background Colors - Light Mode */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F9FA;
-  --bg-tertiary: #F0F3F7;
-  
-  /* Text Colors */
+  --bg-secondary: #F9F9F9;
+  --bg-tertiary: #F3F3F3;
+
+  /* Text Colors - Light Mode */
   --text-primary: #1A1A1A;
   --text-secondary: #4A4A4A;
-  --text-muted: #888888;
-  
-  /* Accent Colors */
-  --highlight: #4ECDC4;
-  --highlight-dark: #3BA39C;
-  
-  /* Border & Shadow */
-  --border-color: rgba(255, 107, 53, 0.15);
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.15);
-  
+  --text-muted: #6B6B6B;
+
+  /* Border & Shadow - Minimized */
+  --border-color: #E5E5E5;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
   /* Animation Timing */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark Mode Theme */
+/* Dark Mode Theme (Primary) - Monochromatic */
 [data-theme="dark"] {
-  /* Primary Colors - Keep accent colors consistent for brand identity */
-  --accent: #FF6B35;
-  --accent-light: #FF8555;
-  --accent-dark: #E55100;
-  
-  /* Background Colors - Dark variants */
-  --bg-primary: #0A0E27;
-  --bg-secondary: #1A1F3A;
-  --bg-tertiary: #2D3448;
-  
-  /* Text Colors - Light variants for dark background */
-  --text-primary: #E8ECFF;
-  --text-secondary: #B0B8CC;
-  --text-muted: #7A8299;
-  
-  /* Accent Colors - Brighter for visibility on dark */
-  --highlight: #4ECDC4;
-  --highlight-dark: #3BA39C;
-  
-  /* Border & Shadow - Adjusted for dark mode */
-  --border-color: rgba(255, 107, 53, 0.25);
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.5);
+  /* Accent Colors - Grayscale */
+  --accent-primary: #E8E8E8;
+  --accent-secondary: #A0A0A0;
+  --accent-hover: #CCCCCC;
+
+  /* Background Colors - Dark Monochrome */
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #1A1A1A;
+  --bg-tertiary: #2A2A2A;
+
+  /* Text Colors - White to Light Slate */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+
+  /* Border & Shadow - Minimized for dark */
+  --border-color: #2D3B57;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* ============================================================================
@@ -83,8 +94,7 @@ body,
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
-              'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-sans);
   background: var(--bg-primary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -98,19 +108,45 @@ body {
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   line-height: 1.2;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
 }
 
 p {
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Monospace for code/tech labels */
+code, kbd, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
 }
 
 /* ============================================================================
@@ -120,7 +156,7 @@ a {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--spacing-lg);
   width: 100%;
   box-sizing: border-box;
 }
@@ -132,7 +168,7 @@ main.main {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: var(--spacing-3xl) 0;
   position: relative;
   width: 100%;
   border-top: 1px solid var(--border-color);
@@ -145,21 +181,21 @@ main.main {
 }
 
 .section .container {
-  padding: 0 5rem;
+  padding: 0 var(--spacing-3xl);
 }
 
 .section h2 {
   font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-2xl);
   color: var(--text-primary);
   animation: slideInLeft 0.8s ease-out;
 }
 
 .section h3 {
   font-size: 1.35rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: var(--accent-light);
+  font-weight: 600;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
 }

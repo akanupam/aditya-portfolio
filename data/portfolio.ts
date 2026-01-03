@@ -29,7 +29,7 @@ export const portfolioData = {
       tags: ['Flutter', 'Supabase', 'Material 3'],
       type: 'Mobile App',
       featured: true,
-      gradient: 'linear-gradient(135deg, #FF6B35, #FF8555)',
+      gradient: 'linear-gradient(135deg, #1A1A1A, #4A4A4A)',
     },
     {
       title: 'RAG-Powered Query Resolver',
@@ -38,7 +38,16 @@ export const portfolioData = {
       tags: ['Python', 'LangChain', 'Gemini Api'],
       type: 'AI/ML',
       featured: true,
-      gradient: 'linear-gradient(135deg, #4ECDC4, #2FB5A8)',
+      gradient: 'linear-gradient(135deg, #2A2A2A, #5A5A5A)',
+    },
+    {
+      title: 'Hyphenification and Syllabification of Indian Scripts',
+      desc: 'A linguistic processing tool for Indian scripts that implements algorithms to break words into hyphenation points and syllabic units.',
+      github: 'https://github.com/akanupam/hyphenification-and-syllabification-of-indian-scripts',
+      tags: ['Python', 'Linguistics', 'NLP', 'Indian Scripts', 'Unicode'],
+      type: 'AI/ML',
+      featured: true,
+      gradient: 'linear-gradient(135deg, #3A3A3A, #6A6A6A)',
     },
     {
       title: 'Custom-tool-agent',
@@ -47,7 +56,7 @@ export const portfolioData = {
       tags: ['Python', 'Agents', 'Automation'],
       type: 'AI/ML',
       featured: false,
-      gradient: 'linear-gradient(135deg, #FF6B35, #E55100)',
+      gradient: 'linear-gradient(135deg, #1A1A1A, #555555)',
     },
     {
       title: 'Tavily Search Agent',
@@ -56,7 +65,7 @@ export const portfolioData = {
       tags: ['Python', 'Agents', 'APIs'],
       type: 'AI/ML',
       featured: false,
-      gradient: 'linear-gradient(135deg, #4ECDC4, #3BA39C)',
+      gradient: 'linear-gradient(135deg, #2D2D2D, #5D5D5D)',
     },
     {
       title: 'iTweet – Django Social App',
@@ -65,7 +74,7 @@ export const portfolioData = {
       tags: ['Python', 'Django', 'Web'],
       type: 'Web App',
       featured: false,
-      gradient: 'linear-gradient(135deg, #8B5CF6, #7C3AED)',
+      gradient: 'linear-gradient(135deg, #3D3D3D, #6D6D6D)',
     },
     {
       title: 'Jharkhand Trip Itinerary Planner',
@@ -74,7 +83,7 @@ export const portfolioData = {
       tags: ['JavaScript', 'Web', 'APIs'],
       type: 'Web App',
       featured: false,
-      gradient: 'linear-gradient(135deg, #8B5CF6, #6366F1)',
+      gradient: 'linear-gradient(135deg, #252525, #525252)',
     },
     {
       title: 'Agentic Joking Bot',
@@ -83,7 +92,7 @@ export const portfolioData = {
       tags: ['Python', 'LLM', 'Agents'],
       type: 'AI/ML',
       featured: false,
-      gradient: 'linear-gradient(135deg, #FF6B35, #FF8555)',
+      gradient: 'linear-gradient(135deg, #1F1F1F, #4F4F4F)',
     },
     {
       title: 'Aditya Portfolio',
@@ -92,7 +101,7 @@ export const portfolioData = {
       tags: ['JavaScript', 'Frontend', 'Web'],
       type: 'Web App',
       featured: false,
-      gradient: 'linear-gradient(135deg, #4ECDC4, #2FB5A8)',
+      gradient: 'linear-gradient(135deg, #353535, #656565)',
     },
     {
       title: 'PyTorch Journey',
@@ -101,7 +110,7 @@ export const portfolioData = {
       tags: ['Python', 'PyTorch', 'Deep Learning'],
       type: 'AI/ML',
       featured: false,
-      gradient: 'linear-gradient(135deg, #FF6B35, #FFB84D)',
+      gradient: 'linear-gradient(135deg, #282828, #585858)',
     }
   ],
 

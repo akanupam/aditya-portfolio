@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRef } from 'react'
 import Layout from '../components/Layout'
+import HeroModel from '../components/HeroModel'
 import { portfolioData } from '../data/portfolio'
 import { siteConfig } from '../config/site'
 
@@ -12,7 +14,11 @@ import { siteConfig } from '../config/site'
 export default function Home() {
   const { projects, skills: skillsByCategory } = portfolioData
   const { personal, interests } = portfolioData
+  const aboutRef = useRef<HTMLElement>(null)
 
+  const handleScrollToAbout = () => {
+    aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
   return (
     <Layout>
       <Head>
@@ -25,68 +31,62 @@ export default function Home() {
       </Head>
 
       {/* ===== HERO SECTION ===== */}
-      {/* Main hero section with greeting, CTA buttons, and avatar */}
-      <section id="hero" className="hero">
-        <div className="container hero-container">
-          {/* Hero Left - Text Content */}
-          <div className="hero-left">
-            <h1 className="hero-heading">
-              Hello, <span className="gradient-text">I&apos;m {personal.name}</span> 
-            </h1>
+      {/* Cinematic hero: full-width composition with layered content */}
+      <section id="hero" className="hero-cinematic">
+        {/* Layer 1: Constrained text content */}
+        <div className="hero-text-layer">
+          <div className="hero-content">
+            {/* Identity statement */}
+            <p className="hero-greeting">Hello, I&apos;m {personal.name}</p>
             
-            <p className="hero-subtitle">
-              {personal.bio}
-            </p>
-
-            {/* Primary action buttons */}
-            <div className="hero-buttons">
-              <a className="btn primary" href="#contact">
-                {siteConfig.contact.ctaText}
-                <span className="btn-icon">→</span>
-              </a>
-              {/* <a className="btn secondary" href="#projects">
-                View my work
-              </a> */}
-              <a className="btn secondary" href={siteConfig.resume.url} download>
-                📄 {siteConfig.resume.label}
-              </a>
-            </div>
-          </div>
-
-          {/* Hero Right - Visual element (avatar circle) */}
-          <div className="hero-right">
-            <div className="hero-circle">
-              <Image 
-                src="/avatar.jpg" 
-                alt={personal.name}
-                className="hero-circle-img"
-                width={300}
-                height={300}
-                priority
-              />
-            </div>
+            {/* Primary headline - dominant visual element */}
+            <h1 className="hero-headline">
+              AI Engineer Building Intelligence
+            </h1>
           </div>
         </div>
+
+        {/* Layer 2: Unconstrained 3D model - positioned absolutely */}
+        <div className="hero-visual-layer">
+          <div className="hero-model-space">
+            <HeroModel />
+          </div>
+        </div>
+
+        {/* Scroll Arrow - Animated indicator */}
+        <button 
+          className="hero-scroll-arrow"
+          onClick={handleScrollToAbout}
+          aria-label="Scroll to about section"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
       </section>
 
       {/* ===== ABOUT SECTION ===== */}
       {/* Personal introduction, education, and interests */}
-      <section id="about" className="section about">
+      <section id="about" className="section about" ref={aboutRef}>
         <div className="container">
           <h2>About Me</h2>
           
           <div className="about-section">
+            <p className="about-bio">{personal.bio}</p>
+          </div>
+          
+          {/* <div className="about-section">
             <ul className="about-highlights">
               {personal.about.highlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
-          <div className="about-section">
+          {/* <div className="about-section">
             <h3>Education</h3>
             <p className="about-detail">{personal.about.education}</p>
-          </div>
+          </div> */}
 
           <div className="about-section">
             <h3>Interests</h3>
@@ -95,6 +95,20 @@ export default function Home() {
                 <li key={interest}>{interest}</li>
               ))}
             </ul>
+          </div>
+
+          {/* CTAs moved from hero */}
+          <div className="about-cta">
+            <h3>Let&apos;s Connect</h3>
+            <div className="about-buttons">
+              <a className="btn primary" href="#contact">
+                {siteConfig.contact.ctaText}
+                <span className="btn-icon">→</span>
+              </a>
+              <a className="btn secondary" href={siteConfig.resume.url} download>
+                📄 {siteConfig.resume.label}
+              </a>
+            </div>
           </div>
         </div>
       </section>

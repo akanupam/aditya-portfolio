@@ -6,14 +6,14 @@
 .text-primary { color: var(--text-primary); }
 .text-secondary { color: var(--text-secondary); }
 .text-muted { color: var(--text-muted); }
-.text-accent { color: var(--accent); }
+.text-accent { color: var(--accent-primary); }
 
 .bg-primary { background: var(--bg-primary); }
 .bg-secondary { background: var(--bg-secondary); }
 .bg-tertiary { background: var(--bg-tertiary); }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
+  background: var(--accent-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

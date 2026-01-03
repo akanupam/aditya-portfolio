@@ -13,8 +13,21 @@ export function useCursorAnimation() {
       // Safely check if cursor animation is already initialized
       if ((window as any).__cursorAnimationInit) return
 
+      // Get theme color based on current data-theme attribute
+      const getThemeColor = () => {
+        const theme = document.documentElement.getAttribute('data-theme')
+        return theme === 'dark' ? '#FFFFFF' : '#000000'
+      }
+
+      // Get appropriate blend mode for theme
+      const getBlendMode = () => {
+        const theme = document.documentElement.getAttribute('data-theme')
+        return theme === 'dark' ? 'screen' : 'multiply'
+      }
+
       // Canvas setup for particles
       const canvas = document.createElement('canvas')
+      const blendMode = getBlendMode()
       canvas.style.cssText = `
         position: fixed;
         top: 0;
@@ -23,7 +36,7 @@ export function useCursorAnimation() {
         z-index: 9999;
         width: 100%;
         height: 100%;
-        mix-blend-mode: screen;
+        mix-blend-mode: ${blendMode};
       `
       
       try {
@@ -52,6 +65,7 @@ export function useCursorAnimation() {
       let mouseX = 0
       let mouseY = 0
       let isMouseMoving = false
+      let currentColor = getThemeColor()
 
       // Particles array
       const particles: Particle[] = []
@@ -86,7 +100,7 @@ export function useCursorAnimation() {
         draw(ctx: CanvasRenderingContext2D) {
           ctx.save()
           ctx.globalAlpha = this.life
-          ctx.fillStyle = '#FF6B35' // Orange accent color
+          ctx.fillStyle = currentColor
           ctx.beginPath()
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
           ctx.fill()
@@ -116,7 +130,7 @@ export function useCursorAnimation() {
           ctx.save()
           ctx.globalAlpha = 0.3
           const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 30)
-          gradient.addColorStop(0, '#FF6B35')
+          gradient.addColorStop(0, currentColor)
           gradient.addColorStop(1, 'transparent')
           ctx.fillStyle = gradient
           ctx.fillRect(mouseX - 40, mouseY - 40, 80, 80)
@@ -137,6 +151,20 @@ export function useCursorAnimation() {
 
         requestAnimationFrame(animate)
       }
+
+      // Listen for theme changes
+      const handleThemeChange = () => {
+        currentColor = getThemeColor()
+        const newBlendMode = getBlendMode()
+        canvas.style.mixBlendMode = newBlendMode
+      }
+
+      // Observe data-theme attribute changes
+      const observer = new MutationObserver(handleThemeChange)
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+      })
 
       // Event listeners
       document.addEventListener('mousemove', handleMouseMove)
@@ -159,6 +187,7 @@ export function useCursorAnimation() {
           document.removeEventListener('mouseleave', () => {})
           document.removeEventListener('mouseenter', () => {})
           window.removeEventListener('resize', resizeCanvas)
+          observer.disconnect()
           if (canvas.parentNode) {
             document.body.removeChild(canvas)
           }

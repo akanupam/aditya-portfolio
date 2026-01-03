@@ -4,7 +4,7 @@
  */
 
 export const siteConfig = {
-  name: "Aadi's Web",
+  name: "Aadi's Space",
   description: "Full-stack developer & AI enthusiast. I create fast, scalable web applications using React, Next.js, and modern technologies.",
   author: 'Aditya',
   url: 'aditanupam.dev',
@@ -55,7 +55,7 @@ export const siteConfig = {
   },
 
   resume: {
-    url: '/Aditya_CV.pdf',
+    url: '/Aditya_General_CV.pdf',
     label: 'Download Resume',
   },
 }
