@@ -105,12 +105,6 @@ export default function Navbar() {
                 key={item.href} 
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={
-                  (pathname === '/projects' && item.label === 'Projects') || 
-                  (pathname === '/skills' && item.label === 'Skills')
-                  ? 'active' 
-                  : ''
-                }
               >
                 {item.label}
               </a>
