@@ -45,7 +45,7 @@ export default function PageLoader() {
     >
       <div className="iris-logo">
         <p className="iris-label">welcome to</p>
-        <h1 className="iris-title">Aadi's Space</h1>
+        <h1 className="iris-title">Aadi&apos;s Space</h1>
       </div>
     </div>
   )

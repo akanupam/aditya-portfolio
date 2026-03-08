@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import Link from 'next/link'
 import Layout from '../components/Layout'
 import { portfolioData } from '../data/portfolio'
 import { siteConfig } from '../config/site'
@@ -117,9 +118,9 @@ export default function Skills() {
         <div className="sk-foot reveal">
           <div className="container">
             <p className="sk-foot-text">Always learning. Always building.</p>
-            <a href="/#contact" className="sk-foot-link">
+            <Link href="/#contact" className="sk-foot-link">
               get in touch →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
