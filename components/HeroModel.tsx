@@ -12,7 +12,9 @@ import { useEffect, useRef, useState } from 'react'
  * - Accessibility-friendly (aria-hidden, no keyboard trap)
  */
 
-// Extend JSX IntrinsicElements to include model-viewer
+// Pinned version — prevents unintentional upgrades and supply-chain drift
+const MODEL_VIEWER_SRC =
+  'https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js'
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -44,19 +46,17 @@ export default function HeroModel() {
   useEffect(() => {
     if (!isClient) return
 
-    // Load model-viewer script from CDN
+    // Guard: don't append a second script if model-viewer is already in head
+    if (document.querySelector(`script[src="${MODEL_VIEWER_SRC}"]`)) return
+
     const script = document.createElement('script')
     script.type = 'module'
-    script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js'
+    script.src = MODEL_VIEWER_SRC
     script.async = true
     document.head.appendChild(script)
 
-    return () => {
-      // Cleanup: remove script on unmount
-      if (document.head.contains(script)) {
-        document.head.removeChild(script)
-      }
-    }
+    // No cleanup removal — once loaded, the custom element registry is global.
+    // Removing and re-adding the script doesn't un-register the element.
   }, [isClient])
 
   // Server-side: render nothing
@@ -68,7 +68,7 @@ export default function HeroModel() {
     <div className="hero-model-container">
       <model-viewer
         src="/robotic_eye.glb"
-        alt="3D robotic eye model"
+        alt="Interactive 3D robotic eye model"
         camera-controls={true}
         auto-rotate={!prefersReducedMotion}
         rotation-per-second="30deg" /* Slow rotation: 24s per full rotation */

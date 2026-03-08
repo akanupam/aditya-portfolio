@@ -120,7 +120,9 @@ export function useCursorAnimation() {
         }
       }
 
-      // Animation loop
+      // Animation loop — store ID so it can be cancelled on cleanup
+      let rafId: number
+
       const animate = () => {
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -128,7 +130,7 @@ export function useCursorAnimation() {
         // Draw glow circle around cursor
         if (isMouseMoving) {
           ctx.save()
-          ctx.globalAlpha = 0.3
+          ctx.globalAlpha = 0.1
           const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 30)
           gradient.addColorStop(0, currentColor)
           gradient.addColorStop(1, 'transparent')
@@ -149,7 +151,7 @@ export function useCursorAnimation() {
           }
         }
 
-        requestAnimationFrame(animate)
+        rafId = requestAnimationFrame(animate)
       }
 
       // Listen for theme changes
@@ -166,14 +168,14 @@ export function useCursorAnimation() {
         attributeFilter: ['data-theme']
       })
 
+      // Named handlers so they can be properly removed on cleanup
+      const handleMouseLeave = () => { isMouseMoving = false }
+      const handleMouseEnter = () => { isMouseMoving = true }
+
       // Event listeners
       document.addEventListener('mousemove', handleMouseMove)
-      document.addEventListener('mouseleave', () => {
-        isMouseMoving = false
-      })
-      document.addEventListener('mouseenter', () => {
-        isMouseMoving = true
-      })
+      document.addEventListener('mouseleave', handleMouseLeave)
+      document.addEventListener('mouseenter', handleMouseEnter)
 
       animate()
 
@@ -183,9 +185,10 @@ export function useCursorAnimation() {
       // Cleanup function
       return () => {
         try {
+          cancelAnimationFrame(rafId)
           document.removeEventListener('mousemove', handleMouseMove)
-          document.removeEventListener('mouseleave', () => {})
-          document.removeEventListener('mouseenter', () => {})
+          document.removeEventListener('mouseleave', handleMouseLeave)
+          document.removeEventListener('mouseenter', handleMouseEnter)
           window.removeEventListener('resize', resizeCanvas)
           observer.disconnect()
           if (canvas.parentNode) {

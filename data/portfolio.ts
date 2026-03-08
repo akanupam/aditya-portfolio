@@ -133,6 +133,7 @@ export const portfolioData = {
 
     Backend_Development: [
       'Django',
+      'FastAPI',
       'Node.js',
       'REST APIs',
       'Database Design',
@@ -158,7 +159,8 @@ export const portfolioData = {
     Databases: [
       'PostgreSQL',
       'MongoDB',
-      'Supabase',
+      'SQLAlchemy',
+      'SQLModel',
       'Database Optimization'
     ],
 

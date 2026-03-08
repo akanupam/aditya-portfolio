@@ -28,13 +28,6 @@
     height: 45vw;
     right: -6vw;
   }
-  
-  .hero-container { gap: 2.5rem; }
-  .hero-right { height: 450px; max-width: 450px; }
-  .hero-circle { width: 350px; height: 350px; }
-  .hero-heading { font-size: 2.8rem; }
-  .hero .container { padding: 0 3rem; }
-  .hero-subtitle { font-size: 1.05rem; }
 }
 
 /* MEDIUM (900px) - Better transition */
@@ -52,14 +45,6 @@
   .section { padding: 4rem 0; }
   .section .container { padding: 0 3rem; }
   .section h2 { font-size: 2rem; }
-  
-  .grid { grid-template-columns: repeat(3, 1fr); }
-  .grid li { padding: 1.2rem 1rem; font-size: 0.9rem; }
-  
-  .projects { grid-template-columns: repeat(2, 1fr); }
-  .project { padding: 1.5rem; }
-  
-  .skills-by-category { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   
   /* Navbar links - adjust for large desktop */
   .links { gap: 0.875rem; }
@@ -146,19 +131,6 @@
     margin: 0 auto;
   }
   
-  /* Hero */
-  .hero-container { grid-template-columns: 1fr; gap: 2rem; }
-  .hero { min-height: auto; padding: 3rem 0; }
-  .hero-right { height: 400px; max-width: 100%; }
-  .hero-circle { width: 300px; height: 300px; }
-  .hero-heading { font-size: 2.2rem; }
-  .hero-subtitle { font-size: 0.95rem; }
-  .hero .container { padding: 0 1.2rem; }
-  .hero-buttons { gap: 0.75rem; }
-  
-  /* About buttons */
-  .about-buttons { flex-direction: column; }
-  
   /* Layout */
   .container { padding: 0 1.2rem; }
   .section { padding: 3rem 0; }
@@ -191,76 +163,8 @@
     flex-shrink: 0;
   }
   
-  /* Buttons */
-  .btn { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
-  
-  /* Grid & Projects */
-  .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .grid li { padding: 1rem 0.75rem; font-size: 0.85rem; animation-delay: 0s !important; }
-  
-  .projects { grid-template-columns: 1fr; gap: 1.5rem; }
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  .project { padding: 1.3rem; }
-  .project-badge { top: 0.75rem; right: 0.75rem; }
-  .project-thumbnail { height: 160px; margin: -1.3rem -1.3rem 1.2rem -1.3rem; }
-  .project h4 { font-size: 1rem; }
-  .project p { font-size: 0.9rem; }
-  .project-link { padding: 0.5rem 1rem; font-size: 0.8rem; }
-  .tag { padding: 0.3rem 0.6rem; font-size: 0.7rem; }
-  
-  .filter-tabs { gap: 0.75rem; }
-  .filter-tab { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
-  .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  /* View all link */
   .view-all-link { font-size: 0.95rem; }
-  .github-cta { padding: 2rem 1.5rem; gap: 1rem; margin-top: 3rem; }
-  .github-cta p { font-size: 1rem; }
-  
-  /* Skills */
-  .skills-by-category { grid-template-columns: 1fr; gap: 1.5rem; }
-  .skill-category { padding: 1.25rem; }
-  .badge { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
-  
-  /* CTA & Contact */
-  .cta-section { border-radius: 12px; }
-  .cta-wrapper { padding: 0; }
-  .cta-section h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-  .cta-subtitle { font-size: 0.95rem; margin-bottom: 2rem; }
-  .cta-buttons-group { gap: 1rem; }
-  .btn-large { padding: 0.85rem 1.75rem; font-size: 0.9rem; }
-  
-  .contact-section h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-  .contact-subtitle { font-size: 0.95rem; margin-bottom: 2.5rem; }
-  .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-  .contact-card { padding: 1.5rem; gap: 0.75rem; }
-  .contact-header { gap: 0.75rem; }
-  .contact-icon { font-size: 1.8rem; }
-  .contact-card h3 { font-size: 1.1rem; }
-  .contact-card p { font-size: 0.9rem; }
-  .contact-link { padding: 0.6rem 1.25rem; font-size: 0.85rem; }
-  .contact-note { padding: 1.25rem; font-size: 0.9rem; }
-  
-  /* Experience */
-  .experience-timeline { padding-left: 0; }
-  .experience-timeline::before { display: none; }
-  .exp-marker { display: none; }
-  .experience-item { padding-left: 0; margin-bottom: 1.75rem; }
-  .exp-content h3 { font-size: 1rem; }
-  .exp-company { font-size: 0.85rem; }
-  .exp-period { font-size: 0.8rem; }
-  
-  /* CTA & Contact */
-  .cta-section h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
-  .cta-subtitle { font-size: 0.95rem; margin-bottom: 1.75rem; }
-  .cta-buttons-group { gap: 1rem; }
-  .cta-buttons-group .btn { padding: 0.85rem 1.75rem; font-size: 0.9rem; }
-  
-  .contact-section h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
-  .contact-subtitle { font-size: 0.95rem; margin-bottom: 2.5rem; }
-  .contact-grid { gap: 1.75rem; }
-  .contact-card { padding: 1.75rem; }
-  .contact-card h3 { font-size: 1.15rem; }
-  .contact-icon { font-size: 1.9rem; }
-  .contact-link { padding: 0.65rem 1.4rem; font-size: 0.88rem; }
   
   /* Footer */
   .footer { margin-top: 2rem; padding: 1.75rem 1.2rem; font-size: 0.85rem; }
@@ -272,6 +176,10 @@
   /* About Section */
   .about-section { padding: 1.5rem; margin-bottom: 2rem; }
   .about h3 { font-size: 1.1rem; }
+
+  /* Closing */
+  .closing-section { padding-top: 4rem; padding-bottom: 5rem; }
+  .closing-headline { font-size: clamp(2.2rem, 8vw, 3.5rem); }
 }
 
 /* MOBILE (480px) */
@@ -307,19 +215,6 @@
     max-width: 100%;
   }
   
-  /* Hero */
-  .hero { min-height: 50vh; padding: 3rem 0; }
-  .hero h1 { font-size: 1.8rem; }
-  .hero .container { padding: 0 1rem; }
-  .hero-buttons { flex-direction: column; gap: 0.75rem; }
-  .hero-right { height: 280px; max-width: 100%; }
-  .hero-circle { width: 250px; height: 250px; }
-  
-  /* About buttons */
-  .about-buttons { flex-direction: column; }
-  .about-cta { padding: 1.5rem; }
-  .about-cta h3 { font-size: 1.25rem; }
-  
   /* Layout */
   .container { padding: 0 1rem; }
   .section { padding: 2.25rem 0; }
@@ -328,7 +223,6 @@
   .section h3 { font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
   .section p { font-size: 0.9rem; }
   
-  /* Navbar */
   /* Navbar - Compact pill for mobile with improved touch targets */
   .nav {
     top: 0.75rem;
@@ -363,68 +257,8 @@
   .social-icon { width: 32px; height: 32px; }
   .social-icon svg { width: 16px; height: 16px; }
   
-  /* Buttons */
-  .btn { width: 100%; justify-content: center; padding: 0.7rem 1rem; font-size: 0.85rem; }
-  .btn-large { padding: 0.6rem 1rem; font-size: 0.85rem; }
-  
-  /* Grid & Projects */
-  .grid { grid-template-columns: 1fr; gap: 0.75rem; }
-  .grid li { padding: 0.75rem 0.6rem; font-size: 0.8rem; }
-  
-  .projects { gap: 1rem; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .project { padding: 1rem; overflow: hidden; }
-  .project-badge { top: 0.6rem; right: 0.6rem; font-size: 0.65rem; }
-  .project-thumbnail { width: calc(100% + 2rem); height: 100px; margin: -1rem -1rem 0.8rem -1rem; }
-  .project-type { bottom: 0.8rem; left: 1rem; font-size: 0.7rem; }
-  .project h4 { font-size: 0.95rem; margin-top: 0.5rem; }
-  .project p { font-size: 0.8rem; margin: 0.5rem 0; }
-  .tag { padding: 0.25rem 0.5rem; font-size: 0.65rem; }
-  .project-link { padding: 0.5rem 0.9rem; font-size: 0.75rem; margin-top: 0.6rem; }
-  
-  .filter-tabs { gap: 0.5rem; justify-content: flex-start; overflow-x: auto; padding-bottom: 0.5rem; }
-  .filter-tab { padding: 0.5rem 1rem; font-size: 0.75rem; white-space: nowrap; }
-  .section-header { margin-bottom: 1.5rem; }
-  .section-subtitle { font-size: 1rem; margin-bottom: 1.5rem; }
-  .github-cta { padding: 1.5rem 1rem; gap: 0.75rem; margin-top: 2rem; }
-  .github-cta p { font-size: 0.95rem; }
-  
-  /* Skills */
-  .skills-by-category { gap: 1rem; }
-  .skill-category { padding: 1rem; }
-  .skill-category h3 { font-size: 1rem; margin-bottom: 0.75rem; }
-  .badges { gap: 0.5rem; }
-  .badge { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
-  
-  /* Contact */
-  .contact-methods { gap: 0.75rem; }
-  .contact-methods a { padding: 0.6rem 1rem; font-size: 0.85rem; }
-  
-  /* Experience */
-  .experience-item { margin-bottom: 1.5rem; }
-  .exp-content h3 { font-size: 0.95rem; }
-  .exp-company { font-size: 0.8rem; }
-  .exp-period { font-size: 0.75rem; }
-  .exp-desc { font-size: 0.85rem; }
-  
-  /* CTA & Contact - Mobile */
-  .cta-section { border-radius: 10px; margin: 0 1rem; }
-  .cta-wrapper { padding: 0; }
-  .cta-section h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .cta-subtitle { font-size: 0.9rem; margin-bottom: 1.5rem; }
-  .cta-buttons-group { flex-direction: column; gap: 0.75rem; }
-  .cta-buttons-group .btn { width: 100%; padding: 0.75rem 1.5rem; font-size: 0.85rem; }
-  
-  .contact-section h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .contact-subtitle { font-size: 0.9rem; margin-bottom: 2rem; }
-  .contact-grid { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
-  .contact-card { padding: 1.25rem; border-radius: 10px; gap: 0.75rem; }
-  .contact-header { gap: 0.6rem; }
-  .contact-icon { font-size: 1.6rem; }
-  .contact-card h3 { font-size: 1rem; }
-  .contact-card p { font-size: 0.85rem; margin: 0 0 1rem 0; }
-  .contact-link { padding: 0.55rem 1rem; font-size: 0.8rem; }
-  .contact-note { padding: 1rem; font-size: 0.85rem; }
+  /* Footer */
+  .footer { margin-top: 1.5rem; padding: 1.25rem 1rem; font-size: 0.75rem; }
   
   /* Interests */
   .interests-list li { padding-left: 1.5rem; font-size: 0.85rem; }
@@ -436,24 +270,17 @@
   .about h3::before { height: 14px; width: 2px; }
   .about p { font-size: 0.85rem; line-height: 1.5; }
   
-  /* Skills Page */
-  .skills-page > .container > h2 { font-size: 1.5rem; }
-  .section-subtitle { font-size: 0.95rem; }
-  .featured-title, .all-skills-title { font-size: 1.2rem; margin-bottom: 1rem; }
-  .skills-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-  .skill-card { padding: 1.5rem; }
-  .skill-card h4 { font-size: 1rem; margin-bottom: 0.75rem; }
-  .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  
-  /* Footer */
-  .footer { margin-top: 1.5rem; padding: 1.25rem 1rem; font-size: 0.75rem; }
+  /* Closing */
+  .closing-section { padding-top: 3rem; padding-bottom: 4rem; }
+  .closing-headline { font-size: clamp(1.9rem, 10vw, 2.5rem); letter-spacing: -0.02em; }
+  .closing-sub { font-size: 0.9rem; margin-bottom: 2.5rem; }
+  .closing-link { gap: 0.85rem; padding: 1rem 0; }
+  .closing-link-type { width: 50px; font-size: 0.65rem; }
+  .closing-link-val { font-size: 0.82rem; }
 }
 
 /* SMALL MOBILE (360px) */
 @media (max-width: 360px) {
-  .hero-heading { font-size: 1.5rem; }
-  .hero-subtitle { font-size: 0.85rem; }
   .section h2 { font-size: 1.2rem; }
-  .btn { padding: 0.6rem 0.8rem; font-size: 0.8rem; }
 }
 

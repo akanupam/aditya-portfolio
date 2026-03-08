@@ -1,7 +1,5 @@
-'use client'
-
 import Link from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { siteConfig } from '../config/site'
 
@@ -18,8 +16,8 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
   const router = useRouter()
+  const pathname = router.pathname
 
   // Initialize theme from localStorage on client-side only
   useEffect(() => {
@@ -69,7 +67,15 @@ export default function Navbar() {
     // Close mobile menu
     setMobileMenuOpen(false)
     
-    if (href.startsWith('#')) {
+    if (href === '/') {
+      e.preventDefault()
+      if (isHomePage) {
+        // Already on home page — smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        router.push('/')
+      }
+    } else if (href.startsWith('#')) {
       e.preventDefault()
       const elementId = href.substring(1)
       const element = document.getElementById(elementId)

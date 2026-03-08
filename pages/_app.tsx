@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import '../styles/globals.css'
 import { siteConfig } from '../config/site'
 import { CursorAnimation } from '../components/CursorAnimation'
+import PageLoader from '../components/PageLoader'
 
 // Feature flag - set to false to disable cursor animation
 const ENABLE_CURSOR_ANIMATION = true
@@ -16,6 +17,29 @@ const ENABLE_CURSOR_ANIMATION = true
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const scrollPositions = useRef<Record<string, number>>({})
+
+  /* Scroll-reveal — adds `is-visible` when .reveal elements enter the viewport */
+  useEffect(() => {
+    const attach = () => {
+      const io = new IntersectionObserver(
+        entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible')
+              io.unobserve(e.target)
+            }
+          })
+        },
+        { threshold: 0.07, rootMargin: '0px 0px -48px 0px' }
+      )
+      document.querySelectorAll<Element>('.reveal:not(.is-visible)').forEach(el => io.observe(el))
+      return io
+    }
+    let io = attach()
+    const onRoute = () => { io.disconnect(); setTimeout(() => { io = attach() }, 80) }
+    router.events.on('routeChangeComplete', onRoute)
+    return () => { io.disconnect(); router.events.off('routeChangeComplete', onRoute) }
+  }, [router.events])
 
   useEffect(() => {
     // Store scroll position before navigation
@@ -59,10 +83,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="author" content={siteConfig.author} />
         <meta property="og:site_name" content={siteConfig.name} />
         <meta property="og:locale" content="en_US" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Cursor Animation - Isolated & Detachable */}
       {ENABLE_CURSOR_ANIMATION && <CursorAnimation />}
+      {/* Iris aperture - first visit page reveal */}
+      <PageLoader />
       <Component {...pageProps} />
     </>
   )

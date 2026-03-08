@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "Aadi's Space",
   description: "Full-stack developer & AI enthusiast. I create fast, scalable web applications using React, Next.js, and modern technologies.",
   author: 'Aditya',
-  url: 'aditanupam.dev',
+  url: 'https://aditanupam.dev',
 
   socialLinks: {
     github: {
@@ -23,7 +23,7 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: 'Home', href: '#hero' },
+    { label: 'Home', href: '/' },
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
@@ -32,19 +32,19 @@ export const siteConfig = {
 
   pages: {
     home: {
-      title: 'Home | Aadi\'s Web',
+      title: 'Home | Aadi\'s Space',
       description: 'Full-stack developer & AI enthusiast creating fast, scalable web applications.',
     },
     about: {
-      title: 'About | Aadi\'s Web',
+      title: 'About | Aadi\'s Space',
       description: 'Learn more about Aditya, a full-stack developer interested in web development, systems, and algorithms.',
     },
     projects: {
-      title: 'Projects | Aadi\'s Web',
+      title: 'Projects | Aadi\'s Space',
       description: 'Explore my projects including College Hub, RAG-Powered Query Resolver, and more.',
     },
     skills: {
-      title: 'Skills | Aadi\'s Web',
+      title: 'Skills | Aadi\'s Space',
       description: 'Explore my technical skills and expertise in AI/ML, full-stack development, and DevOps.',
     },
   },

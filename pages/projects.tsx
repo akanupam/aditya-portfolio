@@ -4,21 +4,18 @@ import Layout from '../components/Layout'
 import { portfolioData } from '../data/portfolio'
 import { siteConfig } from '../config/site'
 
-/**
- * Projects Page
- * Dedicated page showcasing all projects with filtering by type
- */
+const FILTERS = ['all', 'AI/ML', 'Web App', 'Mobile App']
+
 export default function Projects() {
   const { projects } = portfolioData
-  const [activeFilter, setActiveFilter] = useState('All')
+  const [activeFilter, setActiveFilter] = useState('all')
+  const [openIdx, setOpenIdx] = useState<number | null>(0)
 
-  // Get unique project types
-  const projectTypes = ['All', ...Array.from(new Set(projects.map(p => p.type)))]
-
-  // Filter projects based on active tab
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
+  const filtered = activeFilter === 'all'
+    ? projects
     : projects.filter(p => p.type === activeFilter)
+
+  const toggle = (i: number) => setOpenIdx(prev => prev === i ? null : i)
 
   return (
     <Layout>
@@ -30,64 +27,117 @@ export default function Projects() {
         <meta property="og:type" content="website" />
       </Head>
 
-      <section className="section projects-page">
-        <div className="container">
-          <h2>All Projects</h2>
-          <p className="section-subtitle">Explore my complete portfolio of AI/ML systems, web applications, and innovative projects.</p>
+      <div className="proj-page">
+        {/* ── Page header ──────────────────────────────── */}
+        <header className="proj-header reveal">
+          <div className="container">
+            <p className="proj-header-pre">{'{/* work */}'}</p>
+            <h1 className="proj-header-title">Things I&apos;ve<br />shipped.</h1>
+            <p className="proj-header-sub">
+              {projects.length} projects across AI/ML, web, and mobile.
+              Code on GitHub, ideas everywhere else.
+            </p>
+          </div>
+        </header>
 
-          {/* Filter Tabs */}
-          <div className="filter-tabs">
-            {projectTypes.map((type) => (
+        {/* ── Filter bar ────────────────────────────── */}
+        <div className="proj-filter-bar">
+          <div className="container">
+            {FILTERS.map(f => (
               <button
-                key={type}
-                className={`filter-tab ${activeFilter === type ? 'active' : ''}`}
-                onClick={() => setActiveFilter(type)}
+                key={f}
+                className={`proj-filter-btn${activeFilter === f ? ' pf-active' : ''}`}
+                onClick={() => { setActiveFilter(f); setOpenIdx(null) }}
               >
-                {type}
+                {f === 'all' ? 'all types' : f.toLowerCase()}
               </button>
             ))}
+            <span className="proj-filter-count">
+              {filtered.length} result{filtered.length !== 1 ? 's' : ''}
+            </span>
           </div>
+        </div>
 
-          {/* Projects Grid */}
-          <ul className="projects projects-grid">
-            {filteredProjects.map((p) => (
-              <li key={p.title} className={`project ${p.featured ? 'featured' : ''}`}>
-                {p.featured && <span className="project-badge">Featured</span>}
-                <div className="project-thumbnail" style={{background: p.gradient}}>
-                  <span className="project-type">{p.type}</span>
-                </div>
-                <h4>{p.title}</h4>
-                <p>{p.desc}</p>
-                <div className="project-tags">
-                  {p.tags.map((tag) => (
-                    <span key={tag} className="tag">{tag}</span>
-                  ))}
-                </div>
-                <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-link">View on GitHub →</a>
-              </li>
-            ))}
-          </ul>
+        {/* ── Case-study list ──────────────────────────── */}
+        <section className="proj-list">
+          <div className="container">
+            {filtered.map((p, i) => {
+              const isOpen = openIdx === i
+              return (
+                <article
+                  key={p.title}
+                  className={`proj-row${isOpen ? ' proj-row-open' : ''}`}
+                >
+                  <button
+                    className="proj-row-head"
+                    onClick={() => toggle(i)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="proj-row-num">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="proj-row-title">{p.title}</span>
+                    <span className="proj-row-type">
+                      {p.type}
+                    </span>
+                    {p.featured && (
+                      <span className="proj-row-star" title="Featured">★</span>
+                    )}
+                    <span className="proj-row-chevron">{isOpen ? '−' : '+'}</span>
+                  </button>
 
-          {filteredProjects.length === 0 && (
-            <div className="no-results">
-              <p>No projects found in this category.</p>
-            </div>
-          )}
+                  {isOpen && (
+                    <div className="proj-row-body">
+                      <div className="proj-row-desc">
+                        <p>{p.desc}</p>
+                        <div className="proj-row-tags">
+                          {p.tags.map(t => (
+                            <span key={t} className="proj-tag">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="proj-row-actions">
+                        <a
+                          href={p.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="proj-gh-link"
+                        >
+                          <span className="proj-gh-link-label">view source</span>
+                          <span className="proj-gh-link-arrow">↗</span>
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </article>
+              )
+            })}
 
-          {/* GitHub CTA Button */}
-          <div className="github-cta">
-            <p>Want to explore more projects and contributions?</p>
-            <a 
-              href={siteConfig.socialLinks.github.url} 
-              target="_blank" 
+            {filtered.length === 0 && (
+              <p className="proj-empty">
+                No projects in this category yet.
+              </p>
+            )}
+          </div>
+        </section>
+
+        {/* ── Footer row ───────────────────────────────── */}
+        <div className="proj-foot reveal">
+          <div className="container">
+            <p className="proj-foot-text">
+              More experiments and learning projects live on GitHub.
+            </p>
+            <a
+              href={siteConfig.socialLinks.github.url}
+              target="_blank"
               rel="noopener noreferrer"
-              className="btn primary"
+              className="proj-foot-link"
             >
-              Explore More on GitHub →
+              @akanupam on GitHub →
             </a>
           </div>
         </div>
-      </section>
+      </div>
     </Layout>
   )
 }

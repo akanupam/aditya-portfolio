@@ -12,7 +12,7 @@ export default function Layout({ children }: PropsWithChildren) {
       {/* Sticky navigation bar */}
       <Navbar />
       {/* Main content area */}
-      <main className="container main">{children}</main>
+      <main className="main">{children}</main>
       {/* Footer with copyright */}
       <footer className="footer">
         <div className="container">© {new Date().getFullYear()} Made by Aditya — Built with Next.js</div>
