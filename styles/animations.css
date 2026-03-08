@@ -6,38 +6,20 @@
    IRIS APERTURE — PAGE LOADER
    ========================================================================== */
 
-@property --iris-r {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 0%;
-}
-
 .iris-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #0A0A0A;
+  background: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  --iris-r: 0%;
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 50%,
-    transparent 0%,
-    transparent var(--iris-r),
-    #000 calc(var(--iris-r) + 0.5%)
-  );
-  mask-image: radial-gradient(
-    circle at 50% 50%,
-    transparent 0%,
-    transparent var(--iris-r),
-    #000 calc(var(--iris-r) + 0.5%)
-  );
-  transition: --iris-r 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+  clip-path: circle(150% at 50% 50%);
+  transition: clip-path 1.2s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .iris-overlay.iris-opening {
-  --iris-r: 160%;
+  clip-path: circle(0% at 50% 50%);
 }
 
 .iris-logo {
@@ -55,7 +37,7 @@
   font-family: 'Courier New', monospace;
   font-size: clamp(0.7rem, 1.5vw, 0.85rem);
   font-weight: 400;
-  color: #666;
+  color: var(--text-muted);
   letter-spacing: 0.25em;
   text-transform: lowercase;
   margin: 0;
@@ -66,7 +48,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.2rem, 6vw, 4rem);
   font-weight: 700;
-  color: #E8E8E8;
+  color: var(--text-primary);
   letter-spacing: -0.04em;
   line-height: 1;
   margin: 0;

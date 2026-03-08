@@ -3,17 +3,9 @@ import { useEffect, useState } from 'react'
 type Phase = 'visible' | 'opening' | 'gone'
 
 export default function PageLoader() {
-  // Start as 'visible' so the overlay is in the server-rendered HTML,
-  // covering the page before any JS runs — no flash of content.
   const [phase, setPhase] = useState<Phase>('visible')
 
   useEffect(() => {
-    // Return visits — kill the overlay instantly, no animation
-    if (sessionStorage.getItem('siteLoaded')) {
-      setPhase('gone')
-      return
-    }
-
     document.body.style.overflow = 'hidden'
 
     const minDelay = new Promise<void>(res => setTimeout(res, 2200))
@@ -27,7 +19,6 @@ export default function PageLoader() {
       setTimeout(() => {
         setPhase('gone')
         document.body.style.overflow = ''
-        sessionStorage.setItem('siteLoaded', 'true')
       }, 1200)
     })
 
