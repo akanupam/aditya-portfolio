@@ -1334,6 +1334,299 @@
 }
 
 /* ============================================================================
+   HOME JOURNEY SECTION — integrated narrative block
+   ========================================================================== */
+
+.home-journey-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.home-journey-shell {
+  border: 1px solid var(--border-color);
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--text-primary) 5%, transparent) 0%, transparent 45%),
+    var(--bg-secondary);
+  padding: 2.25rem;
+}
+
+.home-journey-header {
+  margin-bottom: 2rem;
+  max-width: 640px;
+}
+
+.home-journey-pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.8rem;
+}
+
+.home-journey-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.35rem;
+  color: var(--text-primary);
+}
+
+/* Academic Metadata Cards — University Context */
+.home-journey-academic-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.home-academic-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.home-academic-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.home-academic-value {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.home-journey-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1.35rem;
+  align-items: start;
+}
+
+.home-journey-timeline {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+}
+
+.home-tl-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  opacity: 0.65;
+  padding: 1rem 1.1rem 0.75rem;
+  margin: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.home-journey-item {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 1.1rem;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.home-journey-item:last-child {
+  border-bottom: none;
+}
+
+.home-tl-footer {
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.home-view-full {
+  font-family: 'Courier New', monospace;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  opacity: 0.75;
+}
+
+.home-view-full:hover {
+  opacity: 1;
+}
+
+.home-journey-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.home-journey-education::before { background: #58a6ff; }
+.home-journey-project::before { background: #7ee787; }
+.home-journey-milestone::before { background: #f0883e; }
+
+.home-journey-year {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  opacity: 0.78;
+  padding-top: 0.25rem;
+}
+
+.home-journey-kind {
+  display: inline-flex;
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.45rem;
+  margin-bottom: 0.55rem;
+}
+
+.home-journey-item-title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.home-journey-item-org {
+  margin: 0 0 0.45rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  opacity: 0.65;
+}
+
+.home-journey-item-desc {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.home-journey-side {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-cert-stack,
+.home-resume-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  padding: 1.1rem;
+}
+
+.home-cert-pre,
+.home-resume-pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  opacity: 0.62;
+  margin: 0 0 0.95rem;
+  text-transform: uppercase;
+}
+
+.home-cert-item {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.home-cert-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.home-cert-date {
+  margin: 0 0 0.15rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  opacity: 0.65;
+  letter-spacing: 0.03em;
+}
+
+.home-cert-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.home-cert-issuer {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+/* Resume Card — Prominent */
+.home-resume-card {
+  border: 2px solid var(--text-primary);
+  background: 
+    radial-gradient(circle at top right, color-mix(in srgb, var(--text-primary) 3%, transparent) 0%, transparent 50%),
+    var(--bg-primary);
+  padding: 1.35rem;
+}
+
+.home-resume-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.home-resume-sub {
+  margin: 0 0 1.2rem;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.home-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1.5px solid var(--text-primary);
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.home-resume-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* ============================================================================
    CLOSING SECTION — editorial outro
    ========================================================================== */
 
@@ -1623,3 +1916,437 @@
   .sk-panel-glyph { font-size: 1.5rem; }
   .sk-panel-title { font-size: 1.15rem; }
   .sk-skill-name { font-size: 0.85rem; }}
+
+
+/* ============================================================================
+   ABOUT SECTION — PHOTO SPLIT LAYOUT
+   ========================================================================== */
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-terminal {
+  min-width: 0;
+}
+
+.about-split-photo {
+  position: sticky;
+  top: 6rem;
+}
+
+.about-photo-card {
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at top right, color-mix(in srgb, var(--text-primary) 3%, transparent) 0%, transparent 50%),
+    var(--bg-secondary);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.about-photo-card:hover {
+  border-color: var(--text-primary);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(100%) brightness(0.95);
+  transition: filter 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+[data-theme="dark"] .about-photo {
+  filter: grayscale(70%) brightness(0.7) contrast(1.1);
+}
+
+.about-photo-card:hover .about-photo {
+  filter: grayscale(0%) brightness(1);
+}
+
+[data-theme="dark"] .about-photo-card:hover .about-photo {
+  filter: grayscale(0%) brightness(0.95) contrast(1.05);
+}
+
+.about-photo-caption {
+  padding: 1rem 1.1rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: var(--bg-primary);
+}
+
+.about-photo-name {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  letter-spacing: -0.01em;
+}
+
+.about-photo-role {
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  display: block;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================================
+   JOURNEY PAGE
+   ========================================================================== */
+
+.journey-page {
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+  min-height: 100vh;
+}
+
+/* Header */
+.journey-header {
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+}
+
+.journey-header-pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+  opacity: 0.5;
+}
+
+.journey-header-title {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  margin: 0 0 1.5rem 0;
+}
+
+.journey-header-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.03em;
+}
+
+/* Section wrapper */
+.journey-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.journey-section:last-child {
+  border-bottom: none;
+}
+
+/* Section marker (journey-specific, self-contained) */
+.journey-section-marker {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+}
+
+.journey-marker-num {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  opacity: 0.35;
+  letter-spacing: 0.05em;
+}
+
+.journey-marker-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+
+/* ── Timeline ─────────────────────────────────────────────── */
+
+.journey-timeline {
+  position: relative;
+  padding: 0;
+}
+
+/* Vertical guide line */
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  left: 90px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-color);
+}
+
+.journey-entry {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0 2.5rem;
+  padding: 0 0 2.5rem 0;
+  position: relative;
+}
+
+.journey-entry:last-child {
+  padding-bottom: 0;
+}
+
+/* Timeline dot */
+.journey-entry::after {
+  content: '';
+  position: absolute;
+  left: 90px;
+  top: 0.38rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border-color);
+  transform: translateX(-3px);
+  border: 2px solid var(--bg-primary);
+  transition: transform 0.2s;
+}
+
+.journey-entry:hover::after {
+  transform: translateX(-3px) scale(1.4);
+}
+
+.journey-entry-type-education::after { background: #58a6ff; }
+.journey-entry-type-project::after   { background: #7ee787; }
+.journey-entry-type-milestone::after { background: #f0883e; }
+
+.journey-year {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding-top: 0.3rem;
+  text-align: right;
+  letter-spacing: 0.04em;
+  padding-right: 1rem;
+  opacity: 0.7;
+}
+
+.journey-content {
+  padding-bottom: 0;
+}
+
+.journey-type-badge {
+  font-family: 'Courier New', monospace;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 0.55rem;
+}
+
+.journey-entry-type-education .journey-type-badge {
+  color: #58a6ff;
+  border-color: rgba(88, 166, 255, 0.3);
+  background: rgba(88, 166, 255, 0.07);
+}
+
+.journey-entry-type-project .journey-type-badge {
+  color: #7ee787;
+  border-color: rgba(126, 231, 135, 0.3);
+  background: rgba(126, 231, 135, 0.07);
+}
+
+.journey-entry-type-milestone .journey-type-badge {
+  color: #f0883e;
+  border-color: rgba(240, 136, 62, 0.3);
+  background: rgba(240, 136, 62, 0.07);
+}
+
+.journey-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.journey-org {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+  opacity: 0.65;
+}
+
+.journey-desc {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 660px;
+}
+
+
+/* ── Certifications ───────────────────────────────────────── */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  border: 1px solid var(--border-color);
+  margin-top: 0;
+}
+
+.cert-card {
+  padding: 1.5rem;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  transition: background 0.2s;
+}
+
+.cert-card:hover {
+  background: var(--bg-tertiary);
+}
+
+.cert-card-pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  opacity: 0.55;
+}
+
+.cert-card-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.cert-card-issuer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 0 0 1rem;
+}
+
+.cert-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cert-card-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.cert-card-link {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1px;
+  transition: border-color 0.2s;
+}
+
+.cert-card-link:hover {
+  border-color: var(--text-primary);
+}
+
+
+/* ── Resume CTA ───────────────────────────────────────────── */
+
+.resume-cta {
+  border: 1px solid var(--border-color);
+  padding: 2.5rem 3rem;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  transition: border-color 0.25s;
+}
+
+.resume-cta:hover {
+  border-color: var(--text-muted);
+}
+
+.resume-cta-text {
+  flex: 1;
+}
+
+.resume-cta-pre {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+  opacity: 0.6;
+}
+
+.resume-cta-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.resume-cta-sub {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+}
+
+.resume-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.25rem;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.resume-cta-btn:hover {
+  opacity: 0.8;
+}

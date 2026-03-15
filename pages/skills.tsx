@@ -14,17 +14,17 @@ const CAT_META: Record<string, { label: string; color: string; glyph: string }> 
   Mobile_Development:    { label: 'Mobile',                color: '#79c0ff', glyph: '◻'  },
   Databases:             { label: 'Databases',             color: '#a5d6ff', glyph: '⛁'  },
   DevOps_Infrastructure: { label: 'DevOps',                color: '#ff7b72', glyph: '⚙'  },
-  Emerging_Focus:        { label: 'Emerging Focus',        color: '#f0883e', glyph: '◈'  },
-}
+  Emerging_Focus:        { label: 'Emerging Focus',        color: '#f0883e', glyph: '◈'  },  Soft_Skills:           { label: 'Soft Skills',           color: '#8b949e', glyph: '◐'  },}
 
 const CATS = Object.keys(CAT_META)
 
 export default function Skills() {
   const skills = portfolioData.skills as Record<string, string[]>
+  const softSkills = (portfolioData.softSkills as string[]) ?? []
   const [activeCat, setActiveCat] = useState(CATS[0])
 
-  const totalSkills = Object.values(skills).flat().length
-  const activeSkills = skills[activeCat] ?? []
+  const totalSkills = Object.values(skills).flat().length + softSkills.length
+  const activeSkills = activeCat === 'Soft_Skills' ? softSkills : (skills[activeCat] ?? [])
   const meta = CAT_META[activeCat]
 
   return (
@@ -60,7 +60,7 @@ export default function Skills() {
             <nav className="sk-nav">
               {CATS.map(cat => {
                 const m = CAT_META[cat]
-                const count = (skills[cat] ?? []).length
+                const count = cat === 'Soft_Skills' ? softSkills.length : (skills[cat] ?? []).length
                 return (
                   <button
                     key={cat}

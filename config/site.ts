@@ -27,6 +27,7 @@ export const siteConfig = {
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Journey', href: '#journey' },
     { label: 'Contact', href: '#contact' },
   ],
 
@@ -46,6 +47,10 @@ export const siteConfig = {
     skills: {
       title: 'Skills | Aadi\'s Space',
       description: 'Explore my technical skills and expertise in AI/ML, full-stack development, and DevOps.',
+    },
+    journey: {
+      title: 'Journey | Aadi\'s Space',
+      description: 'My academic journey, project milestones, certifications, and professional timeline.',
     },
   },
 

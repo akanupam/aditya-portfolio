@@ -14,29 +14,36 @@ const CAT_COLOR: Record<string, string> = {
   Mobile_Development:    '#79c0ff',
   Databases:             '#a5d6ff',
   Emerging_Focus:        '#f0883e',
+  Soft_Skills:           '#8b949e',
 }
 
-/* Three strip groupings, each at a different speed */
-const STRIPS: Array<{ cats: string[]; duration: number; dir: 'normal' | 'reverse' }> = [
-  { cats: ['Core_Languages', 'DevOps_Infrastructure'],                                    duration: 18, dir: 'normal' },
-  { cats: ['AI_ML_Engineering', 'Emerging_Focus'],                                        duration: 30, dir: 'reverse' },
+/* Four strip groupings, each at a different speed */
+const STRIPS: Array<{ cats: string[]; duration: number; dir: 'normal' | 'reverse'; softSkills?: boolean }> = [
+  { cats: ['Core_Languages', 'DevOps_Infrastructure'],                                        duration: 18, dir: 'normal' },
+  { cats: ['AI_ML_Engineering', 'Emerging_Focus'],                                            duration: 30, dir: 'reverse' },
   { cats: ['Frontend_Development', 'Backend_Development', 'Mobile_Development', 'Databases'], duration: 46, dir: 'normal' },
+  { cats: ['Soft_Skills'],                                                                     duration: 22, dir: 'reverse', softSkills: true },
 ]
 
 type Pill = { label: string; color: string }
 
 export default function KineticSkills() {
   const skills = portfolioData.skills as Record<string, string[]>
+  const softSkills: string[] = (portfolioData.softSkills as string[]) ?? []
   const [isHovering, setIsHovering] = useState(false)
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
-  const strips: Pill[][] = STRIPS.map(({ cats }) =>
-    cats.flatMap(cat =>
+  /* Build pill arrays per strip — soft skills strip uses its own source */
+  const strips: Pill[][] = STRIPS.map(({ cats, softSkills: isSoft }) => {
+    if (isSoft) {
+      return softSkills.map(label => ({ label, color: CAT_COLOR['Soft_Skills'] }))
+    }
+    return cats.flatMap(cat =>
       (skills[cat] ?? []).map(label => ({ label, color: CAT_COLOR[cat] ?? '#ccc' }))
     )
-  )
+  })
 
-  const totalSkillCount = Object.values(skills).flat().length
+  const totalSkillCount = Object.values(skills).flat().length + softSkills.length
 
   return (
     <div
@@ -79,7 +86,7 @@ export default function KineticSkills() {
       })}
 
       <div className="kinetic-footer">
-        <span className="kinetic-hint">hover / tap to slow · {totalSkillCount}+ technologies</span>
+        <span className="kinetic-hint">hover / tap to slow · {totalSkillCount}+ skills & technologies</span>
         <Link href="/skills" className="view-all-link">
           View full skill set →
         </Link>
